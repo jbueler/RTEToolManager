@@ -62,7 +62,8 @@ class Rte_tool_manager_mcp {
       $query = ee()->db->get_where('rte_tools',array('class' => ee()->input->get('class')));
       
       if ($query->num_rows() > 0) {
-        $this->_update_tool($query->result()[0],ee()->input->get('action'));
+        $tools = $query->result();
+        $this->_update_tool($tools[0],ee()->input->get('action'));
       }
       else{
         $this->_add_tool(ee()->input->get('class'));
